@@ -7,8 +7,8 @@ public class Main {
 
     private static final String ACTION_ADD = "add";
     private static final String ACTION_EXIT = "exit";
-    private static final String ACTION_GET_BY_ID = "get students by id";
-    private static final String ACTION_GET_BY_NAME = "get student by name";
+    private static final String ACTION_GET_BY_ID = "get student by id";
+    private static final String ACTION_GET_BY_NAME = "get students by name";
     private static final String ACTION_DELETE_BY_ID = "delete student by id";
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -31,14 +31,14 @@ public class Main {
             } else if (request.equals(ACTION_GET_BY_NAME)) {
                 root.printStudentsByName(enterName());
             } else if (request.equals(ACTION_DELETE_BY_ID)) {
-                System.out.print("Enter id: ");
+                root.deleteStudentById(enterId());
             } else if (request.equals(ACTION_ADD)) {
-                System.out.print("Enter id: ");
-                int id = scanner.nextInt();
-                System.out.print("Enter a name: ");
-                String name = scanner.nextLine();
+                root.addStudent(enterName());
             } else if (request.equals(ACTION_EXIT)) {
                 System.out.println("Disabling");
+                parser.write(root.getStudents(), "students.json");
+            } else {
+                System.out.println("Unavailable request!");
             }
         }
     }
