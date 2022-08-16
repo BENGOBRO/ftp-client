@@ -16,8 +16,6 @@ public class JsonParser {
     private static final String TAG_NAME = "name";
     private static final String TAG_ROOT = "students";
 
-    //private static long maxId = Long.MAX_VALUE;
-
     public Root parse(String fileName) {
 
         Root root = new Root();
@@ -44,7 +42,7 @@ public class JsonParser {
             return root;
 
         } catch (Exception e) {
-            System.out.printf("Error: %s", e.toString());
+            System.out.printf("Error: %s\n", e.toString());
         }
 
         return null;
@@ -64,12 +62,10 @@ public class JsonParser {
 
         jsonRoot.put(TAG_ROOT, jsonStudents);
 
-        try (FileWriter writer = new FileWriter(fileName)) {
+        try (FileWriter writer = new FileWriter(fileName, false)) {
             writer.write(jsonRoot.toJSONString());
         } catch (IOException e){
-            System.out.printf("Error: %s", e.toString());
+            System.out.printf("Error: %s\n", e.toString());
         }
-
-
     }
 }
