@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.infotecs.FTPTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-08-16T12:35:25" hostname="BENGOBRO" time="22.176">
+  <properties/>
+  <testcase name="testConnection[0](192.168.30.1, false)" classname="org.infotecs.FTPTest" time="21.068"/>
+  <testcase name="testConnection[1](192.168.31.143, true)" classname="org.infotecs.FTPTest" time="0.023"/>
+  <testcase name="testDisconnection" classname="org.infotecs.FTPTest" time="0.0"/>
+  <testcase name="testSignIn[0](user, qwerty, false)" classname="org.infotecs.FTPTest" time="0.22"/>
+  <testcase name="testSignIn[1](Michail, 12345678, true)" classname="org.infotecs.FTPTest" time="0.016"/>
+  <testcase name="testDownloading[0](students.json, local.json, true)" classname="org.infotecs.FTPTest" time="0.582"/>
+  <testcase name="testDownloading[1](qpoqw.txt, , false)" classname="org.infotecs.FTPTest" time="0.004"/>
+  <testcase name="testUploading[0](students.json, local.json, true)" classname="org.infotecs.FTPTest" time="0.012"/>
+  <testcase name="testUploading[1](qpoqw.txt, , false)" classname="org.infotecs.FTPTest" time="0.22"/>
+  <system-out><![CDATA[Failed to connect to the server! Error: java.net.ConnectException: Connection timed out: no further information
+SERVER: 220 Microsoft FTP Service
+Connection disabled
+SERVER: 220 Microsoft FTP Service
+SERVER: 220 Microsoft FTP Service
+Error: java.io.FileNotFoundException: 
+Error: java.io.FileNotFoundException: 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
