@@ -1,6 +1,5 @@
 package org.infotecs;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -70,12 +69,5 @@ public class Root {
 
     private void sortStudents() {
         Collections.sort(students);
-    }
-
-    @Override
-    public String toString() {
-        return "Root{" +
-                "students=" + students +
-                '}';
     }
 }

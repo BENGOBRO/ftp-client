@@ -25,12 +25,4 @@ public class Student implements Comparable<Student>{
         }
         return this.name.compareTo(s.name);
     }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
