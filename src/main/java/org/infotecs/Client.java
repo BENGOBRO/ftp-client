@@ -73,7 +73,8 @@ public class Client {
                     "(Such a file is needed to save data locally)");
             String localFileName = scanner.nextLine();
             if (server.downloadFile(fileName, localFileName)) {
-                root = parser.parse("local.json");
+                System.out.println("Download successful!");
+                root = parser.parse(localFileName);
                 break;
             }
         }
@@ -99,7 +100,9 @@ public class Client {
             } else if (request.equals(ACTION_EXIT)) {
                 System.out.println("Shutdown...");
                 parser.write(root.getStudents(), "local.json");
-                server.uploadFile("students.json", "local.json");
+                if (server.uploadFile("students.json", "local.json")) {
+                    System.out.println("Upload successful!");
+                };
                 server.disconnect();
                 break;
             } else {

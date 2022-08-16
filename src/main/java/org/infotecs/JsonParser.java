@@ -48,7 +48,7 @@ public class JsonParser {
         return null;
     }
 
-    public void write(List<Student> students, String fileName) {
+    public boolean write(List<Student> students, String fileName) {
 
         JSONObject jsonRoot = new JSONObject();
         JSONArray jsonStudents = new JSONArray();
@@ -64,8 +64,10 @@ public class JsonParser {
 
         try (FileWriter writer = new FileWriter(fileName, false)) {
             writer.write(jsonRoot.toJSONString());
+            return true;
         } catch (IOException e){
             System.out.printf("Error: %s\n", e.toString());
+            return false;
         }
     }
 }

@@ -4,8 +4,6 @@ import java.io.*;
 import org.apache.commons.net.ftp.FTPClient;
 
 public class FTPServer {
-
-    private static final int PORT = 21;
     private String IP;
     private final FTPClient ftp = new FTPClient();
     private boolean isPassive;
@@ -13,20 +11,15 @@ public class FTPServer {
     public boolean connect() {
         try {
             setMode();
-            ftp.connect(IP, PORT);
+            ftp.connect(IP);
             showServerReply();
         } catch(Exception e) {
             if (ftp.isConnected()) {
-                try {
-                    ftp.disconnect();
-                }
-                catch (final IOException f) {
-                }
+                disconnect();
             }
             System.out.printf("Failed to connect to the server! Error: %s\n", e.toString());
-        } finally {
-            return ftp.isConnected();
         }
+        return ftp.isConnected();
     }
 
     private void setMode() {
@@ -54,25 +47,26 @@ public class FTPServer {
         ftp.setControlKeepAliveTimeout(300);
         try (OutputStream output = new FileOutputStream(localFileName)) {
             isDownloaded = ftp.retrieveFile(remoteFileName, output);
-            System.out.println("Download successful!");
         } catch (IOException e) {
             System.out.printf("Error: %s\n", e.toString());
         }
         return isDownloaded;
     }
 
-    public void uploadFile(String remoteFileName, String localFileName) {
+    public boolean uploadFile(String remoteFileName, String localFileName) {
         try {
             ftp.deleteFile(remoteFileName);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.printf("Error: %s\n", e.toString());
+            return false;
         }
         setMode();
         try (InputStream input = new FileInputStream(localFileName)) {
             ftp.appendFile(remoteFileName, input);
-            System.out.println("Upload successful!");
+            return true;
         } catch (IOException e) {
             System.out.printf("Error: %s\n", e.toString());
+            return false;
         }
     }
 

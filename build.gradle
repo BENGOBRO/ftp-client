@@ -12,8 +12,9 @@ repositories {
 dependencies {
     testImplementation group: 'org.testng', name: 'testng', version: '7.6.1'
     implementation group: 'commons-net', name: 'commons-net', version: '3.8.0'
+    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
 }
 
 test {
-    useJUnitPlatform()
+    useTestNG()
 }
