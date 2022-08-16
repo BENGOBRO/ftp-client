@@ -1,4 +1,5 @@
 ИНСТРУКЦИЯ ПО СБОРКЕ ПРОЕКТА
+
 Склонируйте репозиторий на локальный компьютер. Проект собирается через Gradle, в Build/dependency должны быть указаны зависимости: 
 1. implementation group: 'commons-net', name: 'commons-net', version: '3.8.0'
 2. testImplementation group: 'org.testng', name: 'testng', version: '7.6.1'
